@@ -1,0 +1,32 @@
+{
+    "name": "weather-app",
+    "version": "1.0.0",
+    "description": "watch weather",
+    "main": "src/index.js",
+    "engines": {
+        "node": "18.x"
+      },
+    "scripts": {
+        "start": "node src/index.js",
+        "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/carotsieupham/Weather_app.git"
+    },
+    "author": "Mtri",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/carotsieupham/Weather_app/issues"
+    },
+    "homepage": "https://github.com/carotsieupham/Weather_app#readme",
+    "devDependencies": {
+        "body-parser": "^1.20.2",
+        "express": "^4.18.2",
+        "express-handlebars": "^7.1.2",
+        "i18next": "^23.5.1",
+        "node-sass": "^9.0.0",
+        "nodemon": "^3.0.1"
+    }
+}

@@ -1,0 +1,54 @@
+<link rel='stylesheet' href='/css/weather.css' />
+<nav class='navbar navbar-expand-lg navbar-dark bg-custom'>
+
+    <a class='navbar-brand' href='/'><i
+            class='fa-solid fa-cloud-sun-rain fa-2xl'
+            style='color: #ffffff;'
+        ></i>SkyView</a>
+
+</nav>
+<div class='weather-render'>
+
+    <div class='container'>
+
+        <div class='search-box'>
+            <i class='fa-solid fa-location-dot'></i>
+            <input
+                type='text'
+                placeholder='Enter your location'
+                class='search-input'
+                value='Công Hòa Xã Hội Chủ Nghĩa Việt Nam'
+            />
+            <button class='fa-solid fa-magnifying-glass'></button>
+        </div>
+
+        <div class='not-found'>
+            <img src='/img/404.png' />
+            <p>Oops! Vị trí không hợp lệ :/</p>
+        </div>
+
+        <div class='weather-box'>
+            <img src='' />
+            <p class='temperature'></p>
+            <p class='description'></p>
+        </div>
+
+        <div class='weather-details'>
+            <div class='humidity'>
+                <i class='fa-solid fa-water'></i>
+                <div class='text'>
+                    <span></span>
+                    <p>Độ ẩm</p>
+                </div>
+            </div>
+            <div class='wind'>
+                <i class='fa-solid fa-wind'></i>
+                <div class='text'>
+                    <span></span>
+                    <p>Tốc độ gió</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='/code/app.js'></script>

@@ -1,0 +1,65 @@
+<link rel='stylesheet' href='/css/home.css' />
+<div class="header">
+    {{> headerhome}}
+</div>
+<div
+    id='carouselExampleIndicators'
+    class='carousel slide'
+    data-ride='carousel'
+    data-interval='4000'
+>
+    <ol class='carousel-indicators'>
+        <li
+            data-target='#carouselExampleIndicators'
+            data-slide-to='0'
+            class='active'
+        ></li>
+        <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
+        <li data-target='#carouselExampleIndicators' data-slide-to='2'></li>
+    </ol>
+    <div class='carousel-inner'>
+        <div class='carousel-item active'style='height: 553px;'>
+            <img class='d-block w-100' src='/img/logoWeatherApp2_preview_rev_1.png' alt='First slide' />
+            <div class='carousel-caption d-none d-md-block'>
+                <h3 >SkyView</h3>
+                <p>SkyView là một ứng dụng đơn giản nhưng hữu ích, giúp bạn dễ dàng tra cứu thông tin thời tiết cho bất kỳ địa điểm nào trên thế giới</p>
+            </div>
+        </div>
+        <div class='carousel-item'style='height: 553px;'>
+            <img
+                class='d-block w-100'
+                src='/img/snapedit_1695300753820.png'
+                alt='Second slide'
+            />
+            <div class='carousel-caption d-none d-md-block'>
+                 <h3>Giao Điện</h3>
+                <p>Giao diện thân thiện và dễ sử dụng, ứng dụng này cho phép bạn nhập tên thành phố hoặc vị trí của mình và sau đó cung cấp thông tin chi tiết về thời tiết hiện tại tại đó.</p>
+            </div>
+        </div>
+        <div class='carousel-item'style='height: 553px;'>
+            <img class='d-block w-100' src='/img/snapedit_1695301601417.png' alt='Third slide' />
+            <div class='carousel-caption d-none d-md-block'>
+                <h3>Lợi ích SkyView mang lại</h3>
+                <p>Ứng dụng thời tiết của chúng tôi, bạn có thể xem thông tin về nhiệt độ, mô tả thời tiết, độ ẩm, tốc độ gió </p>
+            </div>
+        </div>
+    </div>
+    <a
+        class='carousel-control-prev'
+        href='#carouselExampleIndicators'
+        role='button'
+        data-slide='prev'
+    >
+        <i class='fa-solid fa-angle-left fa-2xl' style='color: #065165;'></i>
+        <span class='sr-only'>Previous</span>
+    </a>
+    <a
+        class='carousel-control-next'
+        href='#carouselExampleIndicators'
+        role='button'
+        data-slide='next'
+    >
+       <i class='fa-solid fa-angle-right fa-2xl' style='color: #065165;'></i>
+        <span class='sr-only'>Next</span>
+    </a>
+</div>
