@@ -70,7 +70,7 @@ function weatherhandle() {
             )}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`;
-            wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
+            wind.innerHTML = `${json.wind.speed}Km/h`;
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
@@ -82,5 +82,11 @@ function weatherhandle() {
 search.addEventListener('click', () => {
     weatherhandle();
 });
-
+searchInput.addEventListener('keypress', (e) => {
+    if (e.keyCode === 13) {
+        weatherhandle();
+    } else {
+        return;
+    }
+});
 search.click();
