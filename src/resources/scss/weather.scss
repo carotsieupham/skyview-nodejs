@@ -1,7 +1,11 @@
+.weather-app{
+    background: #06283d;
+}
 .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .bg-custom {
     background-color: #032130;
@@ -78,6 +82,11 @@
 .weather-box img {
     width: 60%;
     margin-top: 30px;
+}
+
+.weather-box h1 {
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .weather-box .temperature {
