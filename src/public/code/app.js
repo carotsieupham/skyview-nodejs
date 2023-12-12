@@ -5,6 +5,33 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const searchInput = document.querySelector('.search-box input');
 
+const locationIqApiKey = 'pk.4b30ac60d3c82c4855c67f0c1bda72fd';
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        searchInput.value =
+            'Chia sẻ vị trí địa lý không được trình duyệt hỗ trợ. --- dammio.com';
+    }
+}
+function showPosition(position) {
+    const locationIqUrl = `https://us1.locationiq.com/v1/reverse.php?key=${locationIqApiKey}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&lang=en`;
+
+    fetch(locationIqUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            const countryName = data.address.country;
+            if (countryName == 'Việt Nam') {
+                searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
+            } else {
+                searchInput.value = countryName;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 function weatherhandle() {
     const APIKey = 'c93616e8862ca848ac500e28f134900b';
     const city = searchInput.value;
@@ -89,4 +116,6 @@ searchInput.addEventListener('keypress', (e) => {
         return;
     }
 });
+
+getLocation();
 search.click();
