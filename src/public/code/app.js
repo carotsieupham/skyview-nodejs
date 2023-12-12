@@ -4,35 +4,41 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const searchInput = document.querySelector('.search-box input');
-
-const locationIqApiKey = 'pk.4b30ac60d3c82c4855c67f0c1bda72fd';
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        searchInput.value =
-            'Chia sẻ vị trí địa lý không được trình duyệt hỗ trợ. --- dammio.com';
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => resolve(position),
+                (error) => reject(error)
+            );
+        } else {
+            reject('Geolocation is not supported.');
+        }
+    });
+}
+
+async function showPosition() {
+    try {
+        const position = await getLocation();
+        const locationIqApiKey = 'pk.4b30ac60d3c82c4855c67f0c1bda72fd';
+        const locationIqUrl = `https://us1.locationiq.com/v1/reverse.php?key=${locationIqApiKey}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&lang=en`;
+
+        const response = await fetch(locationIqUrl);
+        const data = await response.json();
+
+        const countryName = data.address.country;
+        if (countryName == 'Việt Nam') {
+            searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
+        } else {
+            searchInput.value = countryName;
+        }
+    } catch (error) {
+        console.error(error);
+        searchInput.value = '';
     }
 }
-function showPosition(position) {
-    const locationIqUrl = `https://us1.locationiq.com/v1/reverse.php?key=${locationIqApiKey}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&lang=en`;
-
-    fetch(locationIqUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            const countryName = data.address.country;
-            if (countryName == 'Việt Nam') {
-                searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
-            } else {
-                searchInput.value = countryName;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
 function weatherhandle() {
+  
     const APIKey = 'c93616e8862ca848ac500e28f134900b';
     const city = searchInput.value;
 
@@ -106,9 +112,11 @@ function weatherhandle() {
             container.style.height = '590px';
         });
 }
-search.addEventListener('click', () => {
+search.addEventListener('click', async () => {
+    await showPosition();
     weatherhandle();
 });
+
 searchInput.addEventListener('keypress', (e) => {
     if (e.keyCode === 13) {
         weatherhandle();
@@ -117,5 +125,6 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
-getLocation();
+
 search.click();
+
