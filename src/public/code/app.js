@@ -4,6 +4,7 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const searchInput = document.querySelector('.search-box input');
+var firstclick=false;
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
@@ -113,7 +114,10 @@ function weatherhandle() {
         });
 }
 search.addEventListener('click', async () => {
-    await showPosition();
+    if(firstclick===false){
+        await showPosition();
+        firstclick=true;
+    }
     weatherhandle();
 });
 
