@@ -27,7 +27,7 @@ async function showPosition() {
         const response = await fetch(locationIqUrl);
         const data = await response.json();
 
-        const countryName = data.address.country;
+        const countryName = data.address.city;
         if (countryName == 'Việt Nam') {
             searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
         } else {
