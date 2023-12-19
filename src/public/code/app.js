@@ -4,13 +4,13 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const searchInput = document.querySelector('.search-box input');
-var firstclick=false;
+var firstclick = false;
 function getLocation() {
     return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => resolve(position),
-                (error) => reject(error)
+                (error) => reject(error),
             );
         } else {
             reject('Geolocation is not supported.');
@@ -27,7 +27,7 @@ async function showPosition() {
         const response = await fetch(locationIqUrl);
         const data = await response.json();
 
-        const countryName = data.address.city;
+        const countryName = data.address.country;
         if (countryName == 'Việt Nam') {
             searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
         } else {
@@ -39,7 +39,6 @@ async function showPosition() {
     }
 }
 function weatherhandle() {
-  
     const APIKey = 'c93616e8862ca848ac500e28f134900b';
     const city = searchInput.value;
 
@@ -114,9 +113,9 @@ function weatherhandle() {
         });
 }
 search.addEventListener('click', async () => {
-    if(firstclick===false){
+    if (firstclick === false) {
         await showPosition();
-        firstclick=true;
+        firstclick = true;
     }
     weatherhandle();
 });
@@ -129,6 +128,4 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
-
 search.click();
-
