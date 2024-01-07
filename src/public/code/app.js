@@ -22,16 +22,19 @@ async function showPosition() {
     try {
         const position = await getLocation();
         const locationIqApiKey = 'pk.4b30ac60d3c82c4855c67f0c1bda72fd';
-        const locationIqUrl = `https://us1.locationiq.com/v1/reverse.php?key=${locationIqApiKey}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&lang=en`;
+        const locationIqUrl = `https://us1.locationiq.com/v1/reverse.php?key=${locationIqApiKey}&lat=
+        ${position.coords.latitude}&lon=${position.coords.longitude}&format=json&lang=en`;
 
         const response = await fetch(locationIqUrl);
         const data = await response.json();
 
+        const cityName = data.address.city;
         const countryName = data.address.country;
-        if (countryName == 'Việt Nam') {
-            searchInput.value = 'Công Hòa Xã Hội Chủ Nghĩa ' + countryName;
-        } else {
+
+        if (cityName == 'undifined') {
             searchInput.value = countryName;
+        } else {
+            searchInput.value = cityName;
         }
     } catch (error) {
         console.error(error);
@@ -40,8 +43,12 @@ async function showPosition() {
 }
 function weatherhandle() {
     const APIKey = 'c93616e8862ca848ac500e28f134900b';
-    const city = searchInput.value;
-
+    const city = '';
+    if (searchInput.value.toLowerCase() == 'việt nam') {
+        city = 'Công Hòa Xã Hội Chủ Nghĩa ' + searchInput.value;
+    } else {
+        city = searchInput.value;
+    }
     if (city === '') return;
 
     fetch(

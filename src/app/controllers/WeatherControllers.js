@@ -1,4 +1,3 @@
-
 class WeatherController{
     search(req,res){
         res.render('weather')
