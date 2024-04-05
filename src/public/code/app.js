@@ -43,7 +43,7 @@ async function showPosition() {
 }
 function weatherhandle() {
     const APIKey = 'c93616e8862ca848ac500e28f134900b';
-    const city = '';
+    let city = '';
     if (searchInput.value.toLowerCase() == 'việt nam') {
         city = 'Công Hòa Xã Hội Chủ Nghĩa ' + searchInput.value;
     } else {
